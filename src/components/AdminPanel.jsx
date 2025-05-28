@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { axiosClient } from "../utils/axiosClient";
+import { useNavigate } from "react-router-dom";
 
 const AdminPanel = () => {
   const [users, setUsers] = useState([]);
   const [expandedUserId, setExpandedUserId] = useState(null);
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   useEffect(() => {
+    const localStorage = window.localStorage;
+    if (!localStorage.getItem("access_token")) {
+      navigate("/login");
+    }
     const fetchUsers = async () => {
       try {
         const response = await axiosClient.get("/auth/users");

@@ -9,7 +9,7 @@ import {
 
 export const axiosClient = axios.create({
   // baseURL: `https://angelpro-react.onrender.com`,
-  baseURL: `http://localhost:4000`,
+  baseURL: `https://angelpro-backend.onrender.com/`,
   withCredentials: true, // this line helps us to set cookies
 });
 
