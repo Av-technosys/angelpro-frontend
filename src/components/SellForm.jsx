@@ -20,7 +20,7 @@ const SellForm = () => {
       try {
         const resultAction = await dispatch(userBankAcoounts());
         if (userBankAcoounts.fulfilled.match(resultAction)) {
-          setBankAccounts(resultAction.payload.result);
+          setBankAccounts(resultAction.payload?.result);
         }
       } catch (error) {
         console.error("Error fetching withdrawal history:", error);
@@ -239,7 +239,7 @@ const SellForm = () => {
           <div className="bg-white p-6 rounded-md shadow-md w-full max-w-md">
             <h2 className="text-lg font-bold mb-4">Select Bank Account</h2>
             <div className="mb-4">
-              {bankAccounts.map((account, index) => (
+              {bankAccounts?.map((account, index) => (
                 <button
                   key={index}
                   onClick={() => handleAccountSelect(account)}
